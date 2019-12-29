@@ -2,7 +2,7 @@ package com.lopic.boot.springboot.service.posts;
 
 import com.lopic.boot.springboot.domain.posts.Posts;
 import com.lopic.boot.springboot.domain.posts.PostsRepository;
-import com.lopic.boot.springboot.web.dto.PostUpdateRequestDto;
+import com.lopic.boot.springboot.web.dto.PostsUpdateRequestDto;
 import com.lopic.boot.springboot.web.dto.PostsResponseDto;
 import com.lopic.boot.springboot.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long id, PostUpdateRequestDto requestDto) {
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
         posts.update(requestDto.getTitle(), requestDto.getContent());
 

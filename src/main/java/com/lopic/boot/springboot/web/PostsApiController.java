@@ -1,8 +1,10 @@
 package com.lopic.boot.springboot.web;
 
 import com.lopic.boot.springboot.service.posts.PostsService;
-import com.lopic.boot.springboot.web.dto.PostUpdateRequestDto;
+import com.lopic.boot.springboot.web.dto.PostsResponseDto;
+import com.lopic.boot.springboot.web.dto.PostsUpdateRequestDto;
 import com.lopic.boot.springboot.web.dto.PostsSaveRequestDto;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,12 @@ public class PostsApiController {
     }
 
     @PutMapping("/api/v1/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody PostUpdateRequestDto requestDto){
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto){
         return postsService.update(id, requestDto);
+    }
+
+    @GetMapping("/api/v1/posts/{id}")
+    public PostsResponseDto findById(@PathVariable Long id) {
+        return postsService.findById(id);
     }
 }
