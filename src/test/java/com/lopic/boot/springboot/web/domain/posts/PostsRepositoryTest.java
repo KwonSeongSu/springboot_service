@@ -2,8 +2,6 @@ package com.lopic.boot.springboot.web.domain.posts;
 
 import com.lopic.boot.springboot.domain.posts.Posts;
 import com.lopic.boot.springboot.domain.posts.PostsRepository;
-import javafx.geometry.Pos;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
