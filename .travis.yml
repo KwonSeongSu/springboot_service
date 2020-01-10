@@ -18,7 +18,7 @@ before_install:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r lopic-springboot-webservice
+  - zip -r lopic-springboot-webservice *
   - mkdir -p deploy
   - mv lopic-springboot-webservice.zip deploy/lopic-springboot-webservice.zip
 
