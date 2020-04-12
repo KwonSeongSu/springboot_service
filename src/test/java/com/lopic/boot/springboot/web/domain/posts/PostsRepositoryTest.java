@@ -45,6 +45,7 @@ public class PostsRepositoryTest {
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+        assertThat(posts.getAuthor()).isEqualTo("lopic@naver.com");
     }
 
     @Test

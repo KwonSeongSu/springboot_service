@@ -4,6 +4,7 @@ import com.lopic.boot.springboot.domain.user.Role;
 import com.lopic.boot.springboot.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.extern.java.Log;
 
 import java.util.Map;
 

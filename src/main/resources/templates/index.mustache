@@ -1,15 +1,14 @@
 {{>layout/header}}
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800"> 게시판 </h1>
-        <p class="mb-4"> 등록된 게시글 목록 </p>
-
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">게시글</h6>
+                    {{#name}}
+                        <a href="/posts/save" class="btn btn-primary active" role="button">글 등록</a>
+                    {{/name}}
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -36,7 +35,6 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- /.container-fluid -->
 {{>layout/footer}}

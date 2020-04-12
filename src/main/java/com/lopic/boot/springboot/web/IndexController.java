@@ -22,19 +22,29 @@ public class IndexController {
     public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
         if (user != null) {
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("name", user.getName());
             model.addAttribute("picture", user.getPicture());
         }
         return "index";
     }
 
     @GetMapping("/posts/save")
-    public String postsSave() {
+    public String postsSave(Model model, @LoginUser SessionUser user) {
+        model.addAttribute("posts", postsService.findAllDesc());
+        if (user != null) {
+            model.addAttribute("name", user.getName());
+            model.addAttribute("picture", user.getPicture());
+        }
         return "posts-save";
     }
 
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) {
+    public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        model.addAttribute("posts", postsService.findAllDesc());
+        if (user != null) {
+            model.addAttribute("name", user.getName());
+            model.addAttribute("picture", user.getPicture());
+        }
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
 
