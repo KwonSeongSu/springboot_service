@@ -16,7 +16,7 @@ public class HelloResponseDtoTest {
 
         //then
         // as 이용 시 [Lombok Name Test] expected:<"Test[1]"> but was:<"Test[]"> 와 같은 설명 문구 추가쌕ㄷㅁ
-        assertThat(dto.getName()).as("Lombok Name Test").isEqualTo("Test1");
+        assertThat(dto.getName()).as("Lombok Name Test").isEqualTo("Test");
         assertThat(dto.getAmount()).isEqualTo(amount);
     }
 }
