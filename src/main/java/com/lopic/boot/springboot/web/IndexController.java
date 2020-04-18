@@ -5,6 +5,7 @@ import com.lopic.boot.springboot.config.auth.dto.SessionUser;
 import com.lopic.boot.springboot.service.posts.PostsService;
 import com.lopic.boot.springboot.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
+@Log4j2
 public class IndexController {
 
     private final PostsService postsService;
@@ -25,6 +27,8 @@ public class IndexController {
             model.addAttribute("name", user.getName());
             model.addAttribute("picture", user.getPicture());
         }
+        
+        log.info("index Test....");
         return "index";
     }
 
