@@ -9894,6 +9894,12 @@
 	 * time.
 	 *  @namespace
 	 */
+	$(document).ready( function() {
+     	$('#data123').dataTable( {
+     		"order": [[0,'desc']]
+     	} );
+    } );
+
 	DataTable.defaults = {
 		/**
 		 * An array of data to use for the table, passed in at initialisation which

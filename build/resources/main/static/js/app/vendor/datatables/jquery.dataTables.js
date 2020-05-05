@@ -2098,8 +2098,8 @@
 		}
 	
 		/* Check that the class assignment is correct for sorting */
-		var bAsc = $.inArray('desc', oCol.asSorting) !== -1;
-		var bDesc = $.inArray('asc', oCol.asSorting) !== -1;
+		var bAsc = $.inArray('asc', oCol.asSorting) !== -1;
+		var bDesc = $.inArray('desc', oCol.asSorting) !== -1;
 		if ( !oCol.bSortable || (!bAsc && !bDesc) )
 		{
 			oCol.sSortingClass = oClasses.sSortableNone;
@@ -5996,7 +5996,7 @@
 	
 						test = x<y ? -1 : x>y ? 1 : 0;
 						if ( test !== 0 ) {
-							return sort.dir === 'desc' ? test : -test;
+							return sort.dir === 'asc' ? test : -test;
 						}
 					}
 	
@@ -6065,7 +6065,7 @@
 			/* In ARIA only the first sorting column can be marked as sorting - no multi-sort option */
 			if ( col.bSortable ) {
 				if ( aSort.length > 0 && aSort[0].col == i ) {
-					th.setAttribute('aria-sort', aSort[0].dir=="desc" ? "ascending" : "descending" );
+					th.setAttribute('aria-sort', aSort[0].dir=="asc" ? "ascending" : "descending" );
 					nextSort = asSorting[ aSort[0].index+1 ] || asSorting[0];
 				}
 				else {
@@ -9894,6 +9894,12 @@
 	 * time.
 	 *  @namespace
 	 */
+	$(document).ready( function() {
+     	$('#data123').dataTable( {
+     		"order": [[0,'desc']]
+     	} );
+    } );
+
 	DataTable.defaults = {
 		/**
 		 * An array of data to use for the table, passed in at initialisation which
@@ -9984,7 +9990,8 @@
 		 *      } );
 		 *    } );
 		 */
-		"aaSorting": [[0,'desc']],
+		"aaSorting": [[0,'asc']],
+	
 	
 		/**
 		 * This parameter is basically identical to the `sorting` parameter, but
@@ -12119,33 +12126,34 @@
 		 *
 		 *  @name DataTable.defaults.column.orderSequence
 		 *  @dtopt Columns
-		 **/
-
-		     $(document).ready( function() {
-		       $('#dataTable').dataTable( {
-		         "columnDefs": [
-		           { "orderSequence": [ "desc" ], "targets": [ 1 ] },
-		           { "orderSequence": [ "desc", "asc", "asc" ], "targets": [ 2 ] },
-		           { "orderSequence": [ "desc" ], "targets": [ 3 ] }
-		         ]
-		      } );
-		    } );
-
-
-		     // Using `columns`
-		     $(document).ready( function() {
-		       $('#dataTable').dataTable( {
-		         "columns": [
-		           null,
-		           { "orderSequence": [ "desc" ] },
-		           { "orderSequence": [ "desc", "asc", "asc" ] },
-		           { "orderSequence": [ "desc" ] },
-		           null
-		         ]
-		       } );
-		     } );
-
-		"asSorting": [ 'desc', 'asc' ],
+		 *
+		 *  @example
+		 *    // Using `columnDefs`
+		 *    $(document).ready( function() {
+		 *      $('#example').dataTable( {
+		 *        "columnDefs": [
+		 *          { "orderSequence": [ "asc" ], "targets": [ 1 ] },
+		 *          { "orderSequence": [ "desc", "asc", "asc" ], "targets": [ 2 ] },
+		 *          { "orderSequence": [ "desc" ], "targets": [ 3 ] }
+		 *        ]
+		 *      } );
+		 *    } );
+		 *
+		 *  @example
+		 *    // Using `columns`
+		 *    $(document).ready( function() {
+		 *      $('#example').dataTable( {
+		 *        "columns": [
+		 *          null,
+		 *          { "orderSequence": [ "asc" ] },
+		 *          { "orderSequence": [ "desc", "asc", "asc" ] },
+		 *          { "orderSequence": [ "desc" ] },
+		 *          null
+		 *        ]
+		 *      } );
+		 *    } );
+		 */
+		"asSorting": [ 'asc', 'desc' ],
 	
 	
 		/**
@@ -14843,8 +14851,8 @@
 							classes.sSortAsc +' '+
 							classes.sSortDesc
 						)
-						.addClass( columns[ colIdx ] == 'desc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'asc' ?
+						.addClass( columns[ colIdx ] == 'asc' ?
+							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
 								classes.sSortDesc :
 								column.sSortingClass
 						);
@@ -14870,8 +14878,8 @@
 	
 					cell
 						.removeClass( classes.sSortAsc +" "+classes.sSortDesc )
-						.addClass( columns[ colIdx ] == 'desc' ?
-							classes.sSortAsc : columns[ colIdx ] == 'asc' ?
+						.addClass( columns[ colIdx ] == 'asc' ?
+							classes.sSortAsc : columns[ colIdx ] == 'desc' ?
 								classes.sSortDesc :
 								column.sSortingClass
 						);
