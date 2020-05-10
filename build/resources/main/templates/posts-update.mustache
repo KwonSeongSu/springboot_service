@@ -1,6 +1,11 @@
 {{>layout/header}}
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">게시글 수정</h1>
+    {{#role}}
+        <h1 class="h3 mb-2 text-gray-800">게시글 수정</h1>
+    {{/role}}
+    {{^role}}
+        <h1 class="h3 mb-2 text-gray-800">게시글 조회</h1>
+    {{/role}}
     <div class="card shadow mb-4">
         <div class="card-body">
             <form>
