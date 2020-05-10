@@ -48,6 +48,8 @@ public class IndexController {
         if (user != null) {
             model.addAttribute("name", user.getName());
             model.addAttribute("picture", user.getPicture());
+            if(user.getRole().equals("ROLE_USER"))
+                model.addAttribute("role", user.getRole());
         }
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
