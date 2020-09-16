@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -23,17 +22,24 @@ public class HelloControllerTest {
     @Autowired
     private MockMvc mvc; //웹api를 테스트할 때 사용. HTTP get, post 등 api 테스트 가능.
 
-    @WithMockUser(roles = "USER")
     @Test
     public void hello가_리턴된다() throws Exception {
-        String hello = "hello";
+        String hello = "hello123";
 
         mvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(hello));
     }
 
-    @WithMockUser(roles = "USER")
+    @Test
+    public void hello_test() throws Exception {
+        String hello = "hello_test";
+
+        mvc.perform(get("/hello_test"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(hello));
+    }
+
     @Test
     public void helloDto가_리턴된다() throws Exception {
         String name = "hello";
